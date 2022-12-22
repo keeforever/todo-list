@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+import { SidePanel, MainPanel } from './wrappers';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Wrapper className="app-container">
+      <SidePanel children={<SidePanel />}/>
+      <MainPanel />
+    </Wrapper>
+  )
 }
+
+const Wrapper = styled.main`
+  display: grid;
+  grid-template-columns: var(--side-panel-width) 1fr;
+  grid-template-rows: 1fr;
+
+  @media screen and (max-width: 730px){
+    grid-template-columns: 1fr;
+  }
+`
 
 export default App;
