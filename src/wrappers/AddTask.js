@@ -6,6 +6,7 @@ import { MdOutlineAccessTime } from 'react-icons/md';
 import { IoCalendarClearOutline } from 'react-icons/io5';
 import { useTodoContext } from '../contexts/todo_context';
 import uuid from 'react-uuid';
+
 /*
 moment().format('MMMM Do YYYY, h:mm:ss a'); // December 20th 2022, 1:40:27 pm
 moment().format('dddd');                    // Tuesday
@@ -33,7 +34,7 @@ function AddTask() {
     const { name, value } = e.currentTarget
 
     if (name === "date") {
-      setState({ ...state, [name]: moment(value).format('Do MMMM YYYY') })
+      setState({ ...state, [name]: moment().format('LL')})
       return
     }
 
@@ -43,6 +44,7 @@ function AddTask() {
       setState({ ...state, [name]: time })
       return
     }
+    
     setState({ ...state, [name]: value })
   }
 

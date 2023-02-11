@@ -1,12 +1,13 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { todoReducer } from "../reducers";
 import { ADD_TASK, EDIT_TASK, UPDATE_TASKS } from "../utils/constants";
+import { getLocalStorage, setLocalStorage } from "../utils/localStorage";
 import {data} from './data';
 
 const TodoContext = createContext({})
 
 const initialState = {
-  tasks: data ,
+  tasks: [] ,
   todayTasks: [],
   todoTasks: [],
   inProgressTasks: [],
@@ -16,7 +17,9 @@ const initialState = {
 }
 
 const TodoContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(todoReducer, initialState)
+  const lsState = getLocalStorage({item:'ls-state'})
+
+  const [state, dispatch] = useReducer(todoReducer, lsState ? lsState : initialState)
 
   const addTask = (task)=>{
     dispatch({type: ADD_TASK, payload: task})
@@ -28,8 +31,13 @@ const TodoContextProvider = ({ children }) => {
 
   useEffect(() => {
     dispatch({type: UPDATE_TASKS})
-  }, [])
+  },[])
+
+  useEffect(() => {
+  })
   
+
+
   return (
     <TodoContext.Provider 
       value={{

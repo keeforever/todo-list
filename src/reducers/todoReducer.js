@@ -1,6 +1,6 @@
 import { ADD_TASK, EDIT_TASK, UPDATE_TASKS } from "../utils/constants"
 import moment from "moment/moment"
-
+import { setLocalStorage } from "../utils/localStorage";
 
 export const todoReducer = (state, action) => {
   const todayDate = moment().format('LL');
@@ -28,6 +28,7 @@ export const todoReducer = (state, action) => {
   }
 
   function updateTasks(tasks){
+    
     let obj = {}
     let scheduledTasks = tasks.forEach((task) => {
       obj[task.date] = obj.hasOwnProperty(task.date)  ? [...obj[task.date]] : []
@@ -56,8 +57,8 @@ export const todoReducer = (state, action) => {
     let completedTasks = todayTasks.filter((task)=>{
       return task.taskStatus === "completed"
     })
-
-    return {
+    const state = {
+      tasks,
       todoTasks,
       inProgressTasks,
       completedTasks,
@@ -65,11 +66,16 @@ export const todoReducer = (state, action) => {
       todayTasks, 
       focusTitle: updateFocusTitle(todayTasks)
     }
+
+    setLocalStorage({item:'ls-state',value: state})
+    return state
   }
 
+
   if (action.type === UPDATE_TASKS) {
-    return { ...state, ...updateTasks(state.tasks) }
+    return { ...state, ...updateTasks(state.tasks)}
   }
+
 
   if (action.type === ADD_TASK) {
     const tasks = [...state.tasks, action.payload]

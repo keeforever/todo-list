@@ -2,9 +2,9 @@ export const data = [
   {
     id: "1",
     time: "12:02 pm",
-    date: "December 21, 2022",
+    date: "December 22, 2022",
     task: "Morning walk",
-    taskStatus: "completed",
+    taskStatus: "todo",
     color: "var(--blue)"
   },
   {
@@ -12,7 +12,7 @@ export const data = [
     time: "10:02 am",
     date: "December 21, 2022",
     task: "Fresh up",
-    taskStatus: "completed",
+    taskStatus: "todo",
     color: "var(--blue)"
   },
   {
