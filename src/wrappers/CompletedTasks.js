@@ -9,7 +9,7 @@ const CompletedTasks = () => {
 
   return (
     <Wrapper>
-      <MainTitle title="Today completed tasks." />
+      <MainTitle title="Today completed tasks." focusTitle={' '}/>
       <TaskList tasks={completedTasks}/>
     </Wrapper>
   )

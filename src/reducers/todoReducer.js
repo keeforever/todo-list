@@ -23,7 +23,8 @@ export const todoReducer = (state, action) => {
     })
     
     timeLine = timeLine.sort((a,b)=>a.time - b.time)
-    return timeLine[0]?.task ? timeLine[0].task : '"Hark work pays off."'
+    // today focus
+    return timeLine[0]?.task ? timeLine[0].task : ''
 
   }
 
@@ -57,6 +58,7 @@ export const todoReducer = (state, action) => {
     let completedTasks = todayTasks.filter((task)=>{
       return task.taskStatus === "completed"
     })
+
     const state = {
       tasks,
       todoTasks,

@@ -4,8 +4,8 @@ import styled from 'styled-components'
 const MainTitle = ({ title, focusTitle }) => {
   return (
     <Wrapper>
-      <h2 className='title'>{title}</h2>
-      <h1 className='title'>{focusTitle}</h1>
+      <h2 className='title' dangerouslySetInnerHTML={{__html: title }}/>
+      <h1 className='title'>{focusTitle ? focusTitle : '"Hark work pays off."'}</h1>
     </Wrapper>
   )
 }

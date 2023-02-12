@@ -10,7 +10,7 @@ function TodayTasks() {
   
   return (
     <Wrapper>
-      <MainTitle title="Today main focus." focusTitle={focusTitle} />
+      <MainTitle title={focusTitle ? "Today main focus." : '&#128077;&#128077;&#128077;'} focusTitle={focusTitle} />
       <AddTask />
       {todoTasks.length !== 0 && <TaskList tasks={todoTasks} />}
     </Wrapper>

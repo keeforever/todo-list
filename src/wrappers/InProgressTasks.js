@@ -8,7 +8,7 @@ const InProgressTasks = () => {
   const {inProgressTasks,focusTitle} = useTodoContext()
   return (
     <Wrapper>
-      <MainTitle title="Today main focus." focusTitle={focusTitle} />
+      <MainTitle title={focusTitle ? "Today main focus." : '&#128077;&#128077;&#128077;'} focusTitle={focusTitle} />
       <TaskList tasks={inProgressTasks}/>
     </Wrapper>
   )

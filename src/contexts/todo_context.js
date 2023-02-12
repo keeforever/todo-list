@@ -1,9 +1,12 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import { todoReducer } from "../reducers";
 import { ADD_TASK, EDIT_TASK, UPDATE_TASKS } from "../utils/constants";
-import { getLocalStorage, setLocalStorage } from "../utils/localStorage";
+import { getLocalStorage } from "../utils/localStorage";
+
+// mock data
 import {data} from './data';
 
+// todo context
 const TodoContext = createContext({})
 
 const initialState = {
@@ -32,11 +35,6 @@ const TodoContextProvider = ({ children }) => {
   useEffect(() => {
     dispatch({type: UPDATE_TASKS})
   },[])
-
-  useEffect(() => {
-  })
-  
-
 
   return (
     <TodoContext.Provider 
